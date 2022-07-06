@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cards.css"/>
+</head>
+<body>
+    <h1>Demo Card Game UI Prototype</h1>
+<h3>Using SASS and CSS transforms with backface-visibility</h3>
+<input class="deal" type="button" value="Deal">
+<div class="deck">
+  <div class="card card1">
+      <div class="face front">front</div>
+      <div class="face back"></div>
+  </div>
+  <div class="card card2">
+      <div class="face front">front</div>
+      <div class="face back"></div>
+  </div>
+  <div class="card card3">
+      <div class="face front">front</div>
+      <div class="face back"></div>
+  </div>
+  <div class="card card4">
+      <div class="face front">front</div>
+      <div class="face back"></div>
+  </div>
+  <div class="card card5">
+      <div class="face front">front</div>
+      <div class="face back"></div>
+  </div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script>
+    // Card Js by James Pickering
+delay = 500; //delay the effect
+fadetime = 500; // fade in time
+// var clicked = false; // set flag for clicked state
+//lastClicked = ""; // last card clicked
+suit = ["clubs", "hearts", "diamonds", "spades"];
+deck = ["ace",2,3,4,5,6,7,8,9,10,"jack","queen","king"];
+
+// Modified Shuffle by Chris Coyier
+// https://css-tricks.com/snippets/javascript/shuffle-array/
+function shuffle(o) {
+	for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	return o;
+};
+
+// Random suit
+function getSuit() {
+  var x = parseInt(Math.random() * 4);
+  return suit[x];
+}
+
+// Deal new card from deck
+function getCards() {
+  for(var i=0; i<=deck.length; i++) {
+    var str = ".card" + i;
+    var str2 = " .front";
+    var el = str.concat(str2);
+    var output = deck[i] + " of " +getSuit(); 
+    $(el).text(output);
+  }
+}
+
+// Deal cards in sequence
+function deal(){
+  $('.card').hide();
+  clicked = false; // set flag for clicked state
+  shuffle(deck);
+  getCards();
+  $('.card1').delay(delay).fadeIn(fadetime);
+  $('.card2').delay(delay*2).fadeIn(fadetime);
+  $('.card3').delay(delay*3).fadeIn(fadetime);
+  $('.card4').delay(delay*4).fadeIn(fadetime);
+  $('.card5').delay(delay*5).fadeIn(fadetime);
+}
+deal();
+
+$('.deal').click(function(){
+	deal();
+});
+
+$('.card').click(function(){
+  $(this).toggleClass('flip');
+});
+</script>
+
+</body>
+</html>

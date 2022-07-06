@@ -1,0 +1,32 @@
+Browser router
+React router for faster loading web pages
+https://unsplash.com/photos/Q3gidZ3ZM5Y backgtound image idea 
+https://victordibia.com/blog/blender-to-react/
+https://medium.com/@zmommaerts/how-to-import-a-gltf-file-into-your-react-application-using-react-three-fiber-63ecf905182c
+3d model in react
+https://freefrontend.com/three-js-games/
+Example
+https://www.google.com/imgres?imgurl=https%3A%2F%2Fus.123rf.com%2F450wm%2Fgiraphics%2Fgiraphics1908%2Fgiraphics190800023%2F129633921-abstract-3d-rendered-with-pastel-colors.jpg%3Fver%3D6&imgrefurl=https%3A%2F%2Fwww.123rf.com%2Fstock-photo%2F3d_stairs.html&tbnid=zgwmFdjp-CPJ0M&vet=10CBEQxiAoA2oXChMIqIusrtjj-AIVAAAAAB0AAAAAEAw..i&docid=Vp8bLrAByXg1yM&w=450&h=253&itg=1&q=stair%203d%20art%20model&client=ubuntu&ved=0CBEQxiAoA2oXChMIqIusrtjj-AIVAAAAAB0AAAAAEAw#imgrc=zgwmFdjp-CPJ0M&imgdii=MLLbVTKZ5UM9PM
+ Для каждого таска сделать отдельный персонаж 
+ Если  пропускает подряд х дней идет вниз 
+ Если жизнь заканчивается лишается подарка 
+ Оставить записки на каждом ступеньки с вопросами 
+ Допустим если бег 
+ Что то увидела у дорожки 
+ Какаяпогода было 
+ +
+Еще можно перевод текста в ширфт браиля для людей с нарушением зрения 
+*шрифт
+Минус затратно 
+
+Как правильно называть людей 
+с ограниченными возможностями 
+Есть сайт конвертер  перевода текста на систему Брайля.
+Думаю можно добавить это как extension который 
+переводит весь сайт например как гугл переводчик 
+А для своей идеи я могу через вас связаться
+с человеком который разбирается в шрифте Брайля? 
+
+Extension который 
+переводит весь сайт  на систему Брайля. Например как гугл переводчик .Можно через I Teach Me
+связаться с человеком который разбирается в шрифте Брайля. 
