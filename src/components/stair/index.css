@@ -12,8 +12,8 @@ background: radial-gradient(#eac4ff,#9e57c5);
 overflow: hidden;
 }
 
-#canvas {
-    
+.area {
+    background-color: #00FF00;
   }
 .stairs{
     position: relative;
