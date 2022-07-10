@@ -12,9 +12,23 @@ background: radial-gradient(#eac4ff,#9e57c5);
 overflow: hidden;
 }
 
-.area {
-    background-color: #00FF00;
-  }
+#image {
+    height: 50px;
+    position:absolute;
+    top:50%;
+    left:50%;
+}
+#bouncing-ball {
+	height: 50px;
+	position: absolute;
+	bottom: 0px;
+    
+	left: 50%;
+	margin-left: -50px;
+}
+
+
+
 .stairs{
     position: relative;
     width: 500px;

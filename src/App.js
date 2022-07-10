@@ -5,9 +5,11 @@ import { Suspense } from 'react';
 import  Scene  from './components/homepage/Scene';
 import './App.css';
 
+
 import Homepage from './components/homepage/Homepage'
 
 function App() {
+  
   return (
     <>
     {/* <Canvas>

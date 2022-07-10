@@ -9,16 +9,18 @@
 body{
 display: flex;
 justify-content: center;
-align-items: center;
+align-items: flex-end;
 min-height: 100vh;
 background: radial-gradient(#eac4ff,#9e57c5);
 overflow: hidden;
 }
+
 .stairs{
     position: relative;
     width: 500px;
     height: 300px;
     transform-style: preserve-3d;
+    // transform: rotateX(0deg) rotateY(360deg);
     transform: rotateX(-30deg) rotateY(30deg);
     // animation: animate 10s linear infinite;
 }

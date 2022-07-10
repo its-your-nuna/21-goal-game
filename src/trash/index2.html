@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+     <div class="stairs"> 
+        <div class="base"> </div>
+            <div class="step" style = "--j:1";>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="step" style = "--j:2";>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="step" style = "--j:3";>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="step" style = "--j:4";>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="step" style = "--j:5";>
+                <i></i>
+                <i></i>
+            </div>
+            <div class="step" style = "--j:6";>
+                <i></i>
+                <i></i>
+        </div>
+     </div>
+    <img id="bouncing-ball" src="./chibi-cat.png"></img>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function bounce(bouncingCount, speed) {
+		var top = 200;
+		var speedRatio = speed / top;
+		var heightRatio = top / bouncingCount;
+
+		for (var i = 1; i <= bouncingCount; i++) {
+            
+			$('#bouncing-ball').animate({
+				'bottom' : top,
+                'left':'+=60px'
+			}, speed);
+			$('#bouncing-ball').animate({
+				'bottom' : 100
+			}, speed / 2);
+            top+=50;
+			// top = top - (heightRatio);
+			// speed = speedRatio * top;
+		}
+	}
+
+	$("#bouncing-ball").click(function() {
+		bounce(1, 500);
+	});
+    // var img = document.getElementById("image");
+    // setInterval(moveElement,20)
+    // var keys = {}
+    // $(document).keydown(function(e){
+    //     keys[e.keyCode] = true;
+    // })
+    // $(document).keyup(function(e){
+    //     delete keys[e.keyCode];
+    // })
+
+    // function moveElement(){
+    //     for(var direction in keys){
+    //         if(!keys.hasOwnProperty(direction))
+    //         continue;
+    //         if(direction == 37){
+    //             $("#image").animate({left:"-=5"},0)
+    //         }
+    //         if(direction == 38){
+    //             $("#image").animate({
+    //             bottom:'100',
+    //             left:"+=5px"
+    //             })
+    //         }if(direction == 39){
+    //             $("#image").animate({left:"+=5"},0)
+    //         }
+    //         if(direction == 40){
+    //             $("#image").animate({
+    //                 top:"+=5px"},0)
+    //         }
+    //     }
+    // }
+// // Simple keyboard handler
+// let object1Size = {
+//   width: 20,
+//   height: 20
+// };
+// let position = {
+//   x: 10,
+//   y: 10
+// };
+// let moveRate = 10;
+// let object1 = document.getElementById("image");
+// function updateYPosition(distance) {
+//   position.y = position.y - distance;
+// // Update y-axis position at the edge.
+//   if (position.y < 0) {
+//     position.y = 499;
+//   } else if (position.y > 499) {
+//     position.y = 0;
+//   }
+// }
+// // Update x-axis position.
+// function updateXPosition(distance) {
+//   position.x = position.x + distance;
+//   // Update x-axis position at the edge.
+//   if (position.x < 0) {
+//     position.x = 499;
+//   } else if (position.x > 499) {
+//     position.x = 0;
+//   }
+// }
+// function refreshPosition() {
+//   let x = position.x - (object1Size.width/2);
+//   let y = position.y - (object1Size.height/2);
+//   let transform = "translate(" + x + " " + y + ")";
+
+//   object1.setAttribute("transform", transform);
+// }
+// window.addEventListener("keydown", function(event) {
+//   if (event.defaultPrevented) {
+//     return;
+//   }
+//   if (event.code === "ArrowDown"){
+//       // Handle "down"
+//       updateYPosition(-moveRate);
+//   } else if (event.code === "ArrowUp"){
+//       // Handle "up"
+//       updateYPosition(moveRate);
+//   } else if (event.code === "ArrowLeft"){
+//       // Handle "left"
+//       updateXPosition(-moveRate);
+//   } else if (event.code === "ArrowRight"){
+//       // Handle "right"
+//       updateXPosition(moveRate);
+//   }
+//   refreshPosition();
+//   event.preventDefault();
+// }, true);
+
+</script>
+    </body>
+</html>

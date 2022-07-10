@@ -2,8 +2,31 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import GltfModel from "./GltfModel";
-
+import $ from 'jquery';
 const ModelViewer = ({ modelPath, scale = 1, position = [0, 0, 0] }) => {
+  function bounce(bouncingCount, speed) {
+		var top = 200;
+		var speedRatio = speed / top;
+		var heightRatio = top / bouncingCount;
+
+		for (var i = 1; i <= bouncingCount; i++) {
+            
+			$('#bouncing-ball').animate({
+				'bottom' : top,
+                'left':'+=60px'
+			}, speed);
+			$('#bouncing-ball').animate({
+				'bottom' : 100
+			}, speed / 2);
+            top+=50;
+			// top = top - (heightRatio);
+			// speed = speedRatio * top;
+		}
+	}
+
+	$("#bouncing-ball").click(function() {
+		bounce(1, 500);
+	});
   return (
     <Canvas>
       <ambientLight />

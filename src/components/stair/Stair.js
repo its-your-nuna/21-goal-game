@@ -1,12 +1,10 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { useEffect } from 'react';
 import './Stair.scss'
-export const Stair = () => {
-  
-  function setSize(size) {
-    console.log(`Updating --j to: ${size}`);
-    document.documentElement.style.setProperty('--j', size);
-  }
+export const Stair = ({stairsRef}) => {
+   
+   const[stepCount,setStepCount]= useState(1)
+     
   return (
     <>
     <div className="stairs">
@@ -15,7 +13,8 @@ export const Stair = () => {
                 <i></i>
                 <i></i>
             </div>
-            <div className="step" style ={ {"--j":2}}>
+            <div className="step"  ref={stairsRef}
+             style ={ {"--j":2}}>
                 <i></i>
                 <i></i>
             </div>

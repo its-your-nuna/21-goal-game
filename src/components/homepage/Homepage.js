@@ -1,14 +1,22 @@
 import React from 'react'
-import data from './data.js'
 import './home.css'
 import { Stair } from '../stair/Stair'
-import ModelViewer from '../ModelViewer.jsx'
+import ModelViewer from '../Three/ModelViewer.jsx'
+import { Chibi } from '../chibi/Chibi.jsx'
 
+import {useRef} from 'react'
 export const Homepage = () => {
+  const stairsRef = useRef(null)
+
   return (
     <>
-    <Stair/>
-    <ModelViewer className='chibi'  modelPath={"./scene.gltf"} />
+    <Stair
+     stairsRef={stairsRef}
+    
+    />
+    <Chibi
+    stairsRef={stairsRef}
+    />
     </>
   )
 }
