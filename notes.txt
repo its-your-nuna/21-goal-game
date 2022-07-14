@@ -32,3 +32,11 @@ Extension который
 связаться с человеком который разбирается в шрифте Брайля. 
 https://phppot.com/jquery/bouncing-ball-animation-using-jquery/
 https://codesandbox.io/s/eager-monad-tb41s
+Bourbon + Scss 
+https://www.sitepoint.com/getting-started-sass-bourbon/
+Speech bubble style
+https://www.amazon.de/Neon-Speech-Bubble-Frame-Light/dp/B08642TWH5
+https://www.google.com/search?q=speech%20bubble%20games&tbm=isch&hl=ru&tbs=rimg:CZ8AIJN_1zK4JYQeBij0ikkUf8AEAsgIMCgIIABAAOgQIABAA&client=ubuntu&hs=lso&sa=X&ved=0CBsQuIIBahcKEwjQp7zngvD4AhUAAAAAHQAAAAAQBg&biw=882&bih=880
+https://www.google.com/search?q=speech%20bubble%20games&tbm=isch&hl=ru&tbs=rimg:CZ8AIJN_1zK4JYQeBij0ikkUf8AEAsgIMCgIIABAAOgQIABAA&client=ubuntu&hs=lso&sa=X&ved=0CBsQuIIBahcKEwjQp7zngvD4AhUAAAAAHQAAAAAQBg&biw=882&bih=880
+Анимация для спич бабл Типо перс после себя оставляет сердечки 
+и если их нажать откроется записка 

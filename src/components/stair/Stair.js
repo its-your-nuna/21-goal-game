@@ -9,11 +9,13 @@ export const Stair = ({stairsRef}) => {
     <>
     <div className="stairs">
         <div className="base"> </div>
-            <div className="step" style = {{"--j":1}}>
+            <div className="step"
+            ref={stairsRef}
+            style = {{"--j":1}}>
                 <i></i>
                 <i></i>
             </div>
-            <div className="step"  ref={stairsRef}
+            <div className="step"  
              style ={ {"--j":2}}>
                 <i></i>
                 <i></i>
