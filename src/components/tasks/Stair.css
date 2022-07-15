@@ -11,16 +11,18 @@
 body {
   /* display: flex;
   justify-content: center;
-  align-items: flex-start; */
+  align-items: center; */
   min-height: 100vh;
-  background: radial-gradient(#eac4ff, #9e57c5);
-  overflow: hidden;
+  /* background: radial-gradient(#eac4ff, #9e57c5);
+  overflow: hidden; */
 }
 
 .stairs {
   position: relative;
+  /* left: 50%; */
   width: 500px;
   height: 300px;
+  margin-left: 50px;
   transform-style: preserve-3d;
   transform: rotateX(-30deg) rotateY(30deg);
 }
