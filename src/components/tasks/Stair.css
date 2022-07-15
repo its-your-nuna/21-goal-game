@@ -9,9 +9,9 @@
 }
 
 body {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start; */
   min-height: 100vh;
   background: radial-gradient(#eac4ff, #9e57c5);
   overflow: hidden;

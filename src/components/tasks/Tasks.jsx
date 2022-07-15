@@ -6,6 +6,9 @@ import {v4 as myId} from 'uuid'
 import { TaskContext } from '../Context'
 import { useContext } from 'react'
 import live from '../../images/heart.png'
+import { animated, useSpring } from "react-spring";
+
+
 export const Tasks = ({tasksDone}) => {
   const[itemToDo,setItemToDo]=useState("")
   const ref = useRef(null);
@@ -13,7 +16,7 @@ export const Tasks = ({tasksDone}) => {
   const[isDeleted,setIsDeleted]=useState(false)
   const{setTasksDone}=useContext(TaskContext)
   const[isClicked,setIsClicked]=useState(false)
-  // const[setFalse]=useContext(TaskContext)
+
   const handleFunction=(event)=>{
     setItemToDo(event.target.value)
   }
@@ -28,11 +31,17 @@ export const Tasks = ({tasksDone}) => {
     setIsClicked(false)
   };
   
- 
+  const springProps = useSpring({
+    from: { },
+    to: async next => {
+      await next({ })
+
+    },
+    config: { duration: 500 }
+  });
   return (
     <>
-    <div className="card" style={{width: '14rem'}}>
-        {/* <img src="..." className="card-img-top" alt="..."/> */}
+    <div className="card">
     <div className="card-body">
         <h5 className="card-title">Day: 1/21 <br/>Running</h5>
         <p className="card-text">
@@ -57,7 +66,7 @@ export const Tasks = ({tasksDone}) => {
       setIsClicked(true)
       setIsDeleted(false)
     }}
-    />:<div></div>
+    />:<></>
     }
     {
       isClicked?<div className='speech-bubble'>
@@ -65,7 +74,6 @@ export const Tasks = ({tasksDone}) => {
       <button
               onClick={()=>handleDelete()}
               type="button"
-             
             >
               delete
             </button>
@@ -74,7 +82,7 @@ export const Tasks = ({tasksDone}) => {
         setIsClicked(false)
       }}
       >scroll</button>
-    </div>:<div></div>
+    </div>:<></>
   }
     </>
   )

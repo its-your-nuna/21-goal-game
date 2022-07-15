@@ -1,5 +1,6 @@
 :root{
     --j:1
+
 }
 *{
     margin: 0;
@@ -7,12 +8,8 @@
     box-sizing: border-box;
 }
 body{
-display: flex;
-justify-content: center;
-align-items: flex-end;
-min-height: 100vh;
+min-height: calc(120px*21);
 background: radial-gradient(#eac4ff,#9e57c5);
-overflow: hidden;
 }
 
 .stairs{

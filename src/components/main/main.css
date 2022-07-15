@@ -1,0 +1,12 @@
+body{
+    overflow: scroll;
+    background-image: url('https://c.tenor.com/_2bFMHQQp8YAAAAC/sky-art.gif');
+    background-size:cover;
+    margin: 0;
+    padding: 0;
+}
+#scroller {
+    width: 200px;
+    height: 500px;
+    overflow: scroll;
+   }
