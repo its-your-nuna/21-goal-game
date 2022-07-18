@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import cat from './chibi-cat.png'
-import './chibi.css'
 import { animated, useSpring } from "react-spring";
 
 

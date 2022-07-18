@@ -11,17 +11,20 @@ export const MainPage = () => {
   const stairsRef = useRef(null)
   const [isClicked, setIsClicked] = useState(false)
   const [daysCount,setDaysCount] = useState(1)
+  const [id,setId] = useState(0)
   return (
     <TaskContext.Provider  value={{
         setTasksDone,
         setDaysCount,
-        setIsClicked
+        setIsClicked,
+        setId
     }}>
     <Stair
     stairsRef={stairsRef}
-    isClicked={isClicked}/>
+    isClicked={isClicked}
+    id={id}/>
     <Chibi
-     daysCount = {daysCount}
+    daysCount = {daysCount}
     stairsRef={stairsRef}
     tasksDone={tasksDone}/> 
     <Tasks
@@ -29,6 +32,7 @@ export const MainPage = () => {
     tasksDone={tasksDone}
     stairsRef={stairsRef}
     isClicked={isClicked}
+    id = {id}
   />
     </TaskContext.Provider>
   )

@@ -17,12 +17,6 @@ body{
   justify-content: flex-start;
   align-items:flex-end;
 }
-.live{
-    position: relative;
-    width: 100px;
-    bottom: 200px;
-    margin-left: -100px;
-  }
 
 .speech-bubble {
   transform: translatey(0px);
@@ -36,8 +30,6 @@ body{
   height: 150px;
   position: relative;
   box-shadow: 10px 10px $color-blue;
-  bottom: 450px;
-  left: 30px;
 &:after {
   transform: translatey(0px);
   animation: float2 5s ease-in-out infinite;
@@ -54,8 +46,12 @@ body{
   box-shadow: 22px 22px $color-blue;
   z-index: -2;
 }
+p{
+  width: 120px;
+  word-wrap: break-word;
+
+}
 button{
-    margin: 2px;
     width: 50px;
     font-size: small;
     background:rgb(239, 136, 244);
@@ -92,6 +88,9 @@ button{
     transform: translatey(0px);
   }
 }
+}
+.null{
+  display: none;
 }
 .player {
   background: $border-color;

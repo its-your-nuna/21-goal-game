@@ -10,8 +10,8 @@ import { animated, useSpring } from "react-spring";
 
 
 
-export const Tasks = ({ stairsRef,isClicked }) => {
-  
+export const Tasks = ({ stairsRef,isClicked,id }) => {
+  let days=2
   const [itemToDo, setItemToDo] = useState("")
   const ref = useRef(null);
   const ref2 = useRef(null);
@@ -24,15 +24,17 @@ export const Tasks = ({ stairsRef,isClicked }) => {
     width: 0,
     height: 0
   })
-
+  console.log(id)
   const handleFunction = (event) => {
     setItemToDo(event.target.value)
   }
   const addItem = () => {
-    const newItem = { key: myId(), label: itemToDo }
-    setItems(newItem)
-    setItemToDo("")
-    setTasksDone(ref.current.checked)
+    if(days===id){
+      const newItem = { key: myId(), label: itemToDo }
+      setItems(newItem)
+      setItemToDo("")
+      setTasksDone(ref.current.checked)
+    }
   }
   const handleDelete = () => {
     setIsClicked(false)
@@ -82,14 +84,7 @@ export const Tasks = ({ stairsRef,isClicked }) => {
     }
     draggable(element)
   })
-  const { x, y, width, height, left, z } = catRect
-
-  let days=2
-
-  const springProps = useSpring({
-    from: {width: '100px', height: '100px', position: 'relative', bottom: height * days + 30 + 'px', left: width *days+width/2 + 'px' },
-    to: {width: '100px', height: '100px', position: 'relative', bottom: (height * days)-height +'px', left: width/2  + 'px' },
-  });
+  const { width, height} = catRect
 
   return (
     <>
@@ -109,16 +104,23 @@ export const Tasks = ({ stairsRef,isClicked }) => {
             </label>
           </p>
           <button href="#" className="pixel"
-            onClick={() => addItem()}>Submit</button>
+            onClick={() => addItem(days)}>Submit</button>
         </div>
       </div>
       {
-            [...Array(3)].map((e, i) => 
-            (i!==0 && isClicked) ? 
-            <div className='speech-bubble' style={{marginLeft:`${i*-30}px`}}>
-              {items.label ? items.label : 'Here your text'}
-              <br/>
-              <div style={{marginTop:'50%'}}>
+            [...Array(23)].map((e, i) => 
+            <div 
+            key={i}
+            className={
+              `${(i!==0 && isClicked && i===id) ?
+                 'speech-bubble':'null'}`}
+            style={{
+              bottom: `${i*height}px`,
+              left: `${i*width/1.5}px`
+      
+            }} >
+            
+              <p>{items.label ? items.label : 'Here your text'}</p>
               <button
                 onClick={() => handleDelete()}
                 type="button"
@@ -126,10 +128,7 @@ export const Tasks = ({ stairsRef,isClicked }) => {
                 delete
               </button>
               </div> 
-            </div>
-        : ''
             )}
-
     </>
   )
 }
