@@ -6,39 +6,49 @@ import { v4 as myId } from 'uuid'
 import { TaskContext } from '../Context'
 import { useContext } from 'react'
 import question from '../../images/question-mark.png'
-import { animated, useSpring } from "react-spring";
-
+import axios from 'axios'
 
 
 export const Tasks = ({ stairsRef,isClicked,id }) => {
-  let days=2
   const [itemToDo, setItemToDo] = useState("")
   const ref = useRef(null);
   const ref2 = useRef(null);
   const [items, setItems] = useState({})
   const {setIsClicked}=useContext(TaskContext)
   const { setTasksDone } = useContext(TaskContext)
+  const [tasks,setTasks] = useState([])
   const [catRect, setCatRect] = useState({
     x: 0,
     y: 0,
     width: 0,
     height: 0
   })
-  console.log(id)
+
+  let day2 = 3
+
   const handleFunction = (event) => {
     setItemToDo(event.target.value)
   }
   const addItem = () => {
-    if(days===id){
+      axios.post("http://localhost:5000/tasks",{
+        content:itemToDo
+      })
+      .then((response)=>{
+        setTasks([...tasks,response.data])
+      })
       const newItem = { key: myId(), label: itemToDo }
       setItems(newItem)
       setItemToDo("")
       setTasksDone(ref.current.checked)
-    }
   }
   const handleDelete = () => {
     setIsClicked(false)
   };
+  useEffect(()=>{
+    axios.get("http://localhost:5000/tasks").then((response) => {
+      setTasks(response.data);
+    });
+  },[])
   var element;
   useEffect(()=>{
     const div = stairsRef.current;
@@ -88,9 +98,15 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
 
   return (
     <>
+    {
+      tasks.map((tasks,index)=>{
+        const{content}=tasks
+        return <p key={index}>{content}</p>
+      })
+    }
       <div className="player"  ref={ref2} >
         <div className="card-body">
-          <h5 className="card-title">Day: 1/21</h5>
+          <h5 className="card-title">Day: {day2}/21</h5>
           <p className="card-text">
             <input ref={ref} className="checkbox-pull" type="checkbox" id="check3" />
             <label htmlFor="check3"><span></span>Сделано</label>
@@ -104,7 +120,7 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
             </label>
           </p>
           <button href="#" className="pixel"
-            onClick={() => addItem(days)}>Submit</button>
+            onClick={() => addItem()}>Submit</button>
         </div>
       </div>
       {
@@ -112,15 +128,15 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
             <div 
             key={i}
             className={
-              `${(i!==0 && isClicked && i===id) ?
+              `${(i!==0 && i===id ) ?
                  'speech-bubble':'null'}`}
             style={{
-              bottom: `${i*height}px`,
-              left: `${i*width/1.5}px`
+              bottom: `${i*height+300}px`,
+              left: `${i*width/1}px`
       
             }} >
             
-              <p>{items.label ? items.label : 'Here your text'}</p>
+              <p>{i===day2 && items.label ? items.label : 'Here your text'}</p>
               <button
                 onClick={() => handleDelete()}
                 type="button"

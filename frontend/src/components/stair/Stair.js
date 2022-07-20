@@ -8,6 +8,10 @@ export const Stair = ({stairsRef,isClicked,id}) => {
     const stairsCount = 23
     const { setIsClicked} = useContext(TaskContext)
     const { setId} = useContext(TaskContext)
+    const clickHeart = (i)=>{
+        setId(i)
+        setIsClicked(!isClicked)
+    }
   return (
     <>
      <div className="stairs" >
@@ -31,8 +35,8 @@ export const Stair = ({stairsRef,isClicked,id}) => {
                 style = {{"--j":i}}>
                     <i><img onClick={
                         ()=>{
-                        setId(i)
-                        setIsClicked(!isClicked)}
+                            clickHeart(i)
+                        }
                         } 
                         style={{width:'75px',margin:'0px'}} 
                         src={live}/></i>

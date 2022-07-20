@@ -15,7 +15,6 @@ export const Chibi = ({ stairsRef, tasksDone,daysCount }) => {
   })
   useEffect(() => {
     const div = stairsRef.current;
-    console.log(div)
     const rect = div.getBoundingClientRect();
     setCatRect({
       x: rect.x,

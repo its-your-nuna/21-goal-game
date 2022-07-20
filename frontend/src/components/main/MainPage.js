@@ -9,7 +9,7 @@ import './main.css'
 export const MainPage = () => {
   const [tasksDone,setTasksDone] = useState(false)
   const stairsRef = useRef(null)
-  const [isClicked, setIsClicked] = useState(false)
+  const [isClicked, setIsClicked] = useState(true)
   const [daysCount,setDaysCount] = useState(1)
   const [id,setId] = useState(0)
   return (
