@@ -21,36 +21,47 @@ client
     console.log(err);
   });
 
-const db = client.db("21goal");
-const collection = db.collection("21goal");
-
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello FUCKING World!");
 });
 
-app.get("/tasks", async (req, res) => {
+const db = client.db("nfactorial");
+  const collection = db.collection("nfactorial");
+
+app.get("/blogs", async (req, res) => {
+
   const result = await collection.find({}).toArray();
 
   res.send(result);
 });
 
-app.post("/tasks", async (req, res) => {
-  const { content} = req.body;
+app.post("/blogs", async (req, res) => {
+  const { author, content, createdAt, title } = req.body;
+
   const response = await collection.insertOne({
-    content
+    author,
+    content,
+    createdAt,
+    title,
   });
 
   const result = {
     id: response.insertedId,
-    content
+    author,
+    content,
+    createdAt,
+    title,
   };
 
   res.send(result);
 });
 
-app.put("/tasks/:id", async (req, res) => {
-  const { content} = req.body;
+app.put("/blogs/:id", async (req, res) => {
+  const { author, content, createdAt, title } = req.body;
   const { id } = req.params;
+
+  const db = client.db("nfactorial");
+  const collection = db.collection("nfactorial");
 
   await collection.updateOne(
     {
@@ -58,14 +69,20 @@ app.put("/tasks/:id", async (req, res) => {
     },
     {
       $set: {
-        content
+        author,
+        content,
+        createdAt,
+        title,
       },
     }
   );
 
   const result = {
     _id: id,
-    content
+    author,
+    content,
+    createdAt,
+    title,
   };
 
   res.send(result);

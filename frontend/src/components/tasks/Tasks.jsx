@@ -41,22 +41,19 @@ export const Tasks = ({ stairsRef
   const handleDelete = () => {
     setIsClicked(false)
   };
+  console.log(id);
   useEffect(() => {
     axios.get("http://localhost:5000/tasks").
       then((response) => {
         setTasks(response.data);
+        // console.log(tasks);
       });
-    for (let i = 0; i < daysCount; i++) {
-      if (tasks[i] !== undefined) {
-        setItems({ label: tasks[i].content })
-      } else {
-        console.log('undefined')
-      }
-    }
-    console.log(items)
+        setItems( tasks )
+        for(let i=0;i<items.length;i++){
+          // console.log(items[i].content)
+        }
+    // console.log(items)
   }, [tasks])
-  
-
   var element;
   useEffect(() => {
     const div = stairsRef.current;
@@ -138,8 +135,8 @@ export const Tasks = ({ stairsRef
 
             }} >
 
-            <p>{i === daysCount && items.label ?
-              items.label :
+            <p>{i === id && items[i-1] ?
+              items[i-1].content :
               'Here your text'}</p>
             <button
               onClick={() => handleDelete()}
