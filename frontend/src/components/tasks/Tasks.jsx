@@ -9,48 +9,56 @@ import question from '../../images/question-mark.png'
 import axios from 'axios'
 
 
-export const Tasks = ({ stairsRef,isClicked,id }) => {
+export const Tasks = ({ stairsRef
+  , isClicked, id, daysCount }) => {
   const [itemToDo, setItemToDo] = useState("")
   const ref = useRef(null);
   const ref2 = useRef(null);
-  const [items, setItems] = useState({})
-  const {setIsClicked}=useContext(TaskContext)
+  const [items, setItems] = useState([])
+  const { setIsClicked } = useContext(TaskContext)
   const { setTasksDone } = useContext(TaskContext)
-  const [tasks,setTasks] = useState([])
+  const [tasks, setTasks] = useState([])
   const [catRect, setCatRect] = useState({
     x: 0,
     y: 0,
     width: 0,
     height: 0
   })
-
-  let day2 = 3
-
   const handleFunction = (event) => {
     setItemToDo(event.target.value)
   }
   const addItem = () => {
-      axios.post("http://localhost:5000/tasks",{
-        content:itemToDo
+    axios.post("http://localhost:5000/tasks", {
+      content: itemToDo
+    })
+      .then((response) => {
+        setTasks([...tasks, response.data])
       })
-      .then((response)=>{
-        setTasks([...tasks,response.data])
-      })
-      const newItem = { key: myId(), label: itemToDo }
-      setItems(newItem)
-      setItemToDo("")
-      setTasksDone(ref.current.checked)
+    setItemToDo("")
+    setTasksDone(ref.current.checked)
   }
+
   const handleDelete = () => {
     setIsClicked(false)
   };
-  useEffect(()=>{
-    axios.get("http://localhost:5000/tasks").then((response) => {
-      setTasks(response.data);
-    });
-  },[])
+  useEffect(() => {
+    axios.get("http://localhost:5000/tasks").
+      then((response) => {
+        setTasks(response.data);
+      });
+    for (let i = 0; i < daysCount; i++) {
+      if (tasks[i] !== undefined) {
+        setItems({ label: tasks[i].content })
+      } else {
+        console.log('undefined')
+      }
+    }
+    console.log(items)
+  }, [tasks])
+  
+
   var element;
-  useEffect(()=>{
+  useEffect(() => {
     const div = stairsRef.current;
     const rect = div.getBoundingClientRect();
     setCatRect({
@@ -61,7 +69,7 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
       width: rect.width,
       height: rect.height
     })
-  },[])
+  }, [])
   useEffect(() => {
     element = ref2.current
     function draggable(element) {
@@ -76,7 +84,7 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
         mouseY = event.clientY;
         isMouseDown = true;
       }
-  
+
       document.addEventListener('mouseup', onMouseUp);
       function onMouseUp(event) {
         isMouseDown = false;
@@ -94,24 +102,18 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
     }
     draggable(element)
   })
-  const { width, height} = catRect
+  const { width, height } = catRect
 
   return (
     <>
-    {
-      tasks.map((tasks,index)=>{
-        const{content}=tasks
-        return <p key={index}>{content}</p>
-      })
-    }
-      <div className="player"  ref={ref2} >
+      <div className="player" ref={ref2} >
         <div className="card-body">
-          <h5 className="card-title">Day: {day2}/21</h5>
+          <h5 className="card-title">Day: {daysCount}/21</h5>
           <p className="card-text">
             <input ref={ref} className="checkbox-pull" type="checkbox" id="check3" />
             <label htmlFor="check3"><span></span>Сделано</label>
             <input className="checkbox-pull" type="checkbox" />
-            <label ><img style={{width:'20px',marginRight:'5px'}} src={question}/>Мои успехи
+            <label ><img style={{ width: '20px', marginRight: '5px' }} src={question} />Мои успехи
               <input value={itemToDo}
                 type="text"
                 className="form-control"
@@ -124,27 +126,29 @@ export const Tasks = ({ stairsRef,isClicked,id }) => {
         </div>
       </div>
       {
-            [...Array(23)].map((e, i) => 
-            <div 
+        [...Array(23)].map((e, i) =>
+          <div
             key={i}
             className={
-              `${(i!==0 && i===id ) ?
-                 'speech-bubble':'null'}`}
+              `${(i !== 0 && i === id) ?
+                'speech-bubble' : 'null'}`}
             style={{
-              bottom: `${i*height+300}px`,
-              left: `${i*width/1}px`
-      
+              bottom: `${i * height + 300}px`,
+              left: `${i * width / 1}px`
+
             }} >
-            
-              <p>{i===day2 && items.label ? items.label : 'Here your text'}</p>
-              <button
-                onClick={() => handleDelete()}
-                type="button"
-              >
-                delete
-              </button>
-              </div> 
-            )}
+
+            <p>{i === daysCount && items.label ?
+              items.label :
+              'Here your text'}</p>
+            <button
+              onClick={() => handleDelete()}
+              type="button"
+            >
+              delete
+            </button>
+          </div>
+        )}
     </>
   )
 }

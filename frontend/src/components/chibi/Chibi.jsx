@@ -4,7 +4,7 @@ import { animated, useSpring } from "react-spring";
 
 
 
-export const Chibi = ({ stairsRef, tasksDone,daysCount }) => {
+export const Chibi = ({ stairsRef, tasksDone, daysCount }) => {
 
   const catRef = useRef(null);
   const [catRect, setCatRect] = useState({
@@ -25,20 +25,20 @@ export const Chibi = ({ stairsRef, tasksDone,daysCount }) => {
       height: rect.height
     })
   }, [])
-  const { width, height} = catRect
+  const { width, height } = catRect
 
   let days;
-  if(tasksDone){
-    days =daysCount
-  }else{
-    days=0
+  if (tasksDone) {
+    days = daysCount
+  } else {
+    days = 0
   }
 
   const springProps = useSpring({
     from: { bottom: height * days + 'px', left: width * days + 'px', width: '100px', height: '100px', position: 'relative' },
     to: async next => {
-      await next({ bottom: height * days * 1.5 + 'px', left: width * days + 'px' })
-      await next({ bottom: height * days + 30 + 'px', left: width *days+width/2 + 'px' })
+      await next({ bottom: height * days +70 + 'px', left: width * days + 'px' })
+      await next({ bottom: height * days + 30 + 'px', left: width * days + width / 2 + 'px' })
     },
     config: { duration: 500 }
   });
