@@ -9,50 +9,60 @@ import question from '../../images/question-mark.png'
 import axios from 'axios'
 
 
-export const Tasks = ({ stairsRef
-  , isClicked, id, daysCount }) => {
+export const Tasks = ({ tasksDone,stairsRef, id, daysCount }) => {
   const [itemToDo, setItemToDo] = useState("")
   const ref = useRef(null);
   const ref2 = useRef(null);
-  const [items, setItems] = useState([])
   const { setIsClicked } = useContext(TaskContext)
   const { setTasksDone } = useContext(TaskContext)
   const [tasks, setTasks] = useState([])
+  const [isEditing, setIsEditing] = useState(false);
+  const [editId,setEditID] = useState(0)
   const [catRect, setCatRect] = useState({
     x: 0,
     y: 0,
     width: 0,
     height: 0
   })
-  const handleFunction = (event) => {
-    setItemToDo(event.target.value)
-  }
   const addItem = () => {
-    axios.post("http://localhost:5000/tasks", {
+    if (isEditing) {
+      axios.put(`http://localhost:5000/tasks/${editId}`,{
+        content: itemToDo
+      }
+      ).then((response)=>{
+        setTasks([...tasks, response.data])
+      })
+    }
+    else{
+      axios.post("http://localhost:5000/tasks", {
       content: itemToDo
     })
       .then((response) => {
         setTasks([...tasks, response.data])
       })
+    }
     setItemToDo("")
     setTasksDone(ref.current.checked)
   }
 
+  const edit = (id) => {
+    const specificItem =  tasks.find((item) =>{
+      return item._id === id
+    });
+    setIsEditing(true);
+    setEditID(id);
+    setItemToDo(specificItem.content);
+  };
+
   const handleDelete = () => {
     setIsClicked(false)
   };
-  console.log(id);
+
   useEffect(() => {
     axios.get("http://localhost:5000/tasks").
       then((response) => {
         setTasks(response.data);
-        // console.log(tasks);
       });
-        setItems( tasks )
-        for(let i=0;i<items.length;i++){
-          // console.log(items[i].content)
-        }
-    // console.log(items)
   }, [tasks])
   var element;
   useEffect(() => {
@@ -111,10 +121,11 @@ export const Tasks = ({ stairsRef
             <label htmlFor="check3"><span></span>Сделано</label>
             <input className="checkbox-pull" type="checkbox" />
             <label ><img style={{ width: '20px', marginRight: '5px' }} src={question} />Мои успехи
-              <input value={itemToDo}
+              <input 
                 type="text"
                 className="form-control"
-                onChange={handleFunction}
+                value={itemToDo}
+                onChange={(e) => setItemToDo(e.target.value)}
               />
             </label>
           </p>
@@ -135,14 +146,20 @@ export const Tasks = ({ stairsRef
 
             }} >
 
-            <p>{i === id && items[i-1] ?
-              items[i-1].content :
+            <p>{i === id && tasks[i-1] ?
+              tasks[i-1].content :
               'Here your text'}</p>
-            <button
+            {/* <button
               onClick={() => handleDelete()}
               type="button"
             >
               delete
+            </button> */}
+            <button
+              type="button"
+              onClick={()=>edit(tasks[i-1]._id)}
+            >
+              edit
             </button>
           </div>
         )}

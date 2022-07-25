@@ -7,10 +7,21 @@
     box-sizing: border-box;
 }
 body{
-min-height: calc(80px*22);
+min-height: calc(80px*25);
 
 }
-
+.gift{
+    position: relative;
+    width: 250px;
+    bottom: calc(60px  * 19);
+    left: calc(55px*20)
+}
+.prize{
+    position: absolute;
+    width: 150px;
+    bottom: calc(-60px  * 9);
+    left: calc(55px*7)
+}
 
 .stairs{
     position: relative;
