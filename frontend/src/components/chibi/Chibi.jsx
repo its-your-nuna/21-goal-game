@@ -1,8 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react'
-import cat from './chibi-cat.png'
+import React, {Suspense, useState, useRef, useEffect } from 'react'
+import cat from './astro.png'
 import { animated, useSpring } from "react-spring";
-
-
 
 export const Chibi = (props) => {
   const {stairsRef,tasksDone, daysCount,savedDay,id} = props
@@ -28,18 +26,18 @@ export const Chibi = (props) => {
   }, [])
   const { width, height } = catRect
   let days=savedDay
+
   if(tasksDone){
     days=daysCount                                                                                                                                 
   }else{
     days=savedDay
   }
   
-
   const springProps = useSpring({
-    from: { bottom: height * days + 'px', left: width * days + 'px', width: '100px', height: '100px', position: 'relative' },
+    from: { bottom: height * days + 'px', left: width * days + 'px', width: '120px', height: '150px', position: 'relative' },
     to: async next => {
-      await next({ bottom: height * days +70 + 'px', left: width * days + 'px' })
-      await next({ bottom: height * days + 30 + 'px', left: width * days + width / 2 + 'px' })
+      await next({ bottom: height * days +150 + 'px', left: width * days + 'px' })
+      await next({ bottom: height * days + 90 + 'px', left: width * days + width / 2 + 'px' })
     },
     config: { duration: 500 }
   });
@@ -50,11 +48,9 @@ export const Chibi = (props) => {
         ref={catRef}
         src={cat}
         alt={'cat'}
-        className='cat'
         style={
           springProps
         } />
-
     </>
   )
 }

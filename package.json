@@ -6,7 +6,7 @@
   "scripts": {
     "start":"nodemon app.js",
     "git": "git status",
-    "git2": "git add . && git commit -m 'add savedDay for jumping after taskDone' && git push -u origin main ",
+    "git2": "git add . && git commit -m 'change style of game' && git push -u origin main ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

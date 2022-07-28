@@ -28,6 +28,7 @@ body{
   border-radius: 11px;
   width: 150px;
   height: 150px;
+
   position: relative;
   box-shadow: 10px 10px $color-blue;
 &:after {
@@ -147,8 +148,8 @@ button{
 }
 
 .checkbox-pull:checked + label span {
+
      &:after {
-     
       background: $border-color;
       animation: pull .4s linear; 
      }
@@ -157,5 +158,7 @@ button{
 input{
   width: 180px;
 }
-
+.modal{
+  background: repeating-linear-gradient(rgba(245, 182, 248,0.5), rgba(244, 174, 242,0.5) 1px, rgba(237, 165, 237, 0.5) 1px, rgba(236, 148, 244, 0.5) 4px);
+}
 

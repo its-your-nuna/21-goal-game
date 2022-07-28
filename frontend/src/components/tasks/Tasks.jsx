@@ -7,13 +7,36 @@ import { TaskContext } from '../Context'
 import { useContext } from 'react'
 import question from '../../images/question-mark.png'
 import axios from 'axios'
-
-
-export const Tasks = ({ tasksDone,stairsRef, id, daysCount }) => {
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+function MyVerticallyCenteredModal(props) {
+  return (
+    <Modal
+      {...props}
+      className = 'modal'
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title >
+          Modal heading
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <h4>You Won!</h4>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button onClick={props.onHide}>Close</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+export const Tasks = ({ isExpired,stairsRef, id, daysCount, modalShow }) => {
   const [itemToDo, setItemToDo] = useState("")
   const ref = useRef(null);
   const ref2 = useRef(null);
-  const { setIsClicked } = useContext(TaskContext)
+  const { setModalShow } = useContext(TaskContext)
   const { setTasksDone } = useContext(TaskContext)
   const [tasks, setTasks] = useState([])
   const [isEditing, setIsEditing] = useState(false);
@@ -54,9 +77,6 @@ export const Tasks = ({ tasksDone,stairsRef, id, daysCount }) => {
     setItemToDo(specificItem.content);
   };
 
-  const handleDelete = () => {
-    setIsClicked(false)
-  };
 
   useEffect(() => {
     axios.get("http://localhost:5000/tasks").
@@ -110,9 +130,15 @@ export const Tasks = ({ tasksDone,stairsRef, id, daysCount }) => {
     draggable(element)
   })
   const { width, height } = catRect
-
+  if(isExpired){
+    ref.current.checked = false;
+  }
   return (
     <>
+        <MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
       <div className="player" ref={ref2} >
         <div className="card-body">
           <h5 className="card-title">Day: {daysCount}/21</h5>
@@ -149,12 +175,6 @@ export const Tasks = ({ tasksDone,stairsRef, id, daysCount }) => {
             <p>{i === id && tasks[i-1] ?
               tasks[i-1].content :
               'Here your text'}</p>
-            {/* <button
-              onClick={() => handleDelete()}
-              type="button"
-            >
-              delete
-            </button> */}
             <button
               type="button"
               onClick={()=>edit(tasks[i-1]._id)}
@@ -163,6 +183,7 @@ export const Tasks = ({ tasksDone,stairsRef, id, daysCount }) => {
             </button>
           </div>
         )}
+        
     </>
   )
 }

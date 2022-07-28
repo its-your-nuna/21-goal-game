@@ -8,20 +8,23 @@ import { CountDownTimer } from './CountDownTimer'
 
 
 export const MainPage = () => {
-  const [tasksDone, setTasksDone] = useState(false)
   const stairsRef = useRef(null)
-  const [isClicked, setIsClicked] = useState(true)
+  const [id, setId] = useState(0)
+  let [count,setCount] = useState(0)
   let [daysCount, setDaysCount] = useState(1)
   const [savedDay,setSavedDay] = useState(1)
-  const [id, setId] = useState(60)
-  let [count,setCount] = useState(0)
-
+  const [isClicked, setIsClicked] = useState(true)
+  const [isExpired, setIsExpired] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [tasksDone, setTasksDone] = useState(false);
+  const [savedTasksDone,setSavedTasksDone] = useState(false);
   useEffect(()=>{
     if(tasksDone){
       setSavedDay(daysCount)
     }
-    if(savedDay===7 || savedDay === 14 || savedDay===21){
+    if(savedDay===1 || savedDay === 14 || savedDay===21){
       setCount(count+=50)
+      setModalShow(true)
     }
     if(savedDay===21){
       setCount(count+=150)
@@ -29,10 +32,12 @@ export const MainPage = () => {
     console.log(savedDay,count)
   },[tasksDone])
 
+  
+
   window.onload = function () {
 
     var display = document.querySelector('#time'),
-      timer = new CountDownTimer(5);
+      timer = new CountDownTimer(10);
 
     timer.onTick(format).onTick(restart).start();
     function restart() {
@@ -44,6 +49,7 @@ export const MainPage = () => {
           daysCount += 1;
           setDaysCount(daysCount)
           setTasksDone(false)
+          setIsExpired(true)
         }
 
       } else if (this.expired() && daysCount > 3) {
@@ -65,13 +71,16 @@ export const MainPage = () => {
       setTasksDone,
       setDaysCount,
       setIsClicked,
-      setId
+      setId,
+      setModalShow
     }}>
       <div><span id="time"></span></div>
       <div><span id="cash">Cash: {count}</span></div>
       <Stair
         stairsRef={stairsRef}
         isClicked={isClicked}
+        taskDone={tasksDone}
+        savedDay={savedDay}
         id={id} />
       <Chibi
         daysCount={daysCount}
@@ -84,6 +93,8 @@ export const MainPage = () => {
         tasksDone={tasksDone}
         stairsRef={stairsRef}
         isClicked={isClicked}
+        isExpired = {isExpired}
+        modalShow = {modalShow}
         id={id}
       />
     </TaskContext.Provider>

@@ -1,3 +1,9 @@
+$size: 80px;
+$size2:450px;
+$stepBeforeColor2: #6ff6f6;
+$stepAfterColor2: hsl(189, 84%, 50%);
+$stepIcolor2:#02c5e7;
+
 :root{
     --j:1
 }
@@ -7,8 +13,9 @@
     box-sizing: border-box;
 }
 body{
-min-height: calc(80px*25);
-
+min-height: calc(450px*6);
+background: radial-gradient(#eac4ff, #9e57c5);
+overflow: hidden;
 }
 .gift{
     position: relative;
@@ -19,18 +26,15 @@ min-height: calc(80px*25);
 .prize{
     position: absolute;
     width: 150px;
-    bottom: calc(-60px  * 9);
-    left: calc(55px*7)
+    bottom: calc(-80px  * 11);
+    left: calc(80px*6.5)
 }
 
 .stairs{
+    text-align: center;
     position: relative;
-    width: 500px;
-    height: 300px;
     transform-style: preserve-3d;
-    // transform: rotateX(0deg) rotateY(360deg);
-    transform: rotateX(-30deg) rotateY(30deg);
-    // animation: animate 10s linear infinite;
+    transform: rotateX(-30deg) rotateY(40deg);
 }
 @keyframes animate
 {
@@ -45,75 +49,75 @@ min-height: calc(80px*25);
         rotateY(360deg);
     }
 }
-.stairs .base{
-    position: absolute;
-    top: 0;
-    left: 60px;
-    width: 360px;
-    height: 300px;
-    background: #a54bcf;
-    transform: rotateX(90deg) translateZ(-150px) scale(1.25);
-    filter: blur(20px);
-    opacity: 0.5;
-}
+
 .stairs .step{
     position: absolute;
-    left:calc(60px*var(--j));
+    left:calc(80px*var(--j));
     bottom: 0;
-    width: 60px;
-    height: calc(60px*var(--j));
+    width: $size;
+    height: calc(80px*var(--j));
     transform-style: preserve-3d;
-}
-.stairs .step::before{
+    &::before{
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 60px;
-    height: 300px;
-    background: #cf8df1;
+    width: $size;
+    height: $size2;
+    background: $stepBeforeColor2;
     transform: rotateX(90deg)
-    translateZ(150px);
-}
-.stairs .step:hover::before{
-    filter: brightness(1.1);
-    cursor: pointer;
-}
-.stairs .step::after{
+    translateZ($size2/2);
+    }
+    &::after{
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
-    height: 60px;
-    background: #ae52dd;
+    width: $size2;
+    height: $size;
+    background: $stepAfterColor2;
     transform: rotateY(90deg)
-    translateZ(-150px);
-}
-.stairs .step i{
+    translateZ(-$size2/2);
+    }
+    i{
     position: absolute;
     display: block;
-    width: 60px;
+    width: $size;
     height: 100%;
-    background: #a54bcf;
+    background: $stepIcolor2;
     transform-style: preserve-3d;
+    }
+    i:nth-child(1)
+    {
+    transform: translateZ($size2/2);
+    }
+    i:nth-child(2)
+    {
+    transform: translateZ(-$size2/2);
+    }
 }
-.stairs .step i:nth-child(1)
-{
-    transform: translateZ(150px);
+
+
+.con {
+    position: relative;
+    text-align: center;
+    color: black;
+    p{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+    }
+  }
+
+.live{
+    width:85px;
+    cursor: pointer;
+    border: 0;
 }
-.stairs .step i:nth-child(2)
-{
-    transform: translateZ(-150px);
+.live-taskDone{
+    width:80px;
+    cursor: pointer;
 }
-.stairs .step:last-child i:nth-child(2)::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 100%;
-    background: #ae52dd;
-    transform: rotateY(90deg)
-    translate3d(-150px,0,-90px);
-}
+

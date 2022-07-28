@@ -5,9 +5,9 @@ import live from '../../images/heart.png'
 import gift from '../../images/gift.png'
 import prize from '../../images/prize.png'
 import { TaskContext } from '../Context'
-import { animated, useSpring } from "react-spring";
 
-export const Stair = ({stairsRef,isClicked,id}) => {
+
+export const Stair = ({stairsRef,isClicked,taskDone,savedDay}) => {
     const stairsCount = 23
     const { setIsClicked} = useContext(TaskContext)
     const { setId} = useContext(TaskContext)
@@ -15,37 +15,14 @@ export const Stair = ({stairsRef,isClicked,id}) => {
         setId(i)
         setIsClicked(!isClicked)
     }
-    const [catRect, setCatRect] = useState({
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0
-      })
-      useEffect(() => {
-        const div = stairsRef.current;
-        const rect = div.getBoundingClientRect();
-        setCatRect({
-          x: rect.x,
-          y: rect.y,
-          z: rect.z,
-          left: rect.left,
-          width: rect.width,
-          height: rect.height
-        })
-      }, [])
-      const { width, height } = catRect
-    const springProps = useSpring({
-        
-      });
-
+    
   return (
     <>
     <img className='gift' src={gift} alt='image'/>
      <div className="stairs" >
-        
         <div className="base"> </div>
         
-            <div className="step"
+            <div className={`${taskDone? 'step-taskDone': 'step'}`}
             ref={stairsRef}
             style = {{"--j":1}}>
                 <i ><img onClick={
@@ -58,16 +35,22 @@ export const Stair = ({stairsRef,isClicked,id}) => {
             {
             [...Array(stairsCount)].map((e, i) => 
             (i!==0)? 
-            <div className="step"
+            <div className='step'
                 key={i}
                 style = {{"--j":i}}>
-                    <i><img onClick={
+                    <i >
+                      <div className='con'>
+                      <img onClick={
                         ()=>{
                             clickHeart(i)
                         }
                         } 
-                        style={{width:'75px',margin:'0px'}} 
-                        src={live}/></i>
+                        className={`${savedDay==taskDone? 'live-taskDone': 'live'}`}
+                        key={i}
+                        src={live}/>
+                        <p>{i}</p>
+                        </div>
+                        </i>
                     <i></i>
                 </div>:''
             )}
