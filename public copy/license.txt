@@ -1,0 +1,11 @@
+Model Information:
+* title:	Kirby
+* source:	https://sketchfab.com/3d-models/kirby-180c0f5600e44517a431c9b488a548e1
+* author:	El Alquimista𓁞 (https://sketchfab.com/ElCanciller)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Kirby" (https://sketchfab.com/3d-models/kirby-180c0f5600e44517a431c9b488a548e1) by El Alquimista𓁞 (https://sketchfab.com/ElCanciller) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)

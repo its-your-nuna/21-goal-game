@@ -45,7 +45,8 @@ export const Chibi = (props) => {
 
   return (
     <>
-      <animated.img
+      <animated.img 
+        draggable = "false"
         ref={catRef}
         src={player?player:cat}
         alt={'cat'}
