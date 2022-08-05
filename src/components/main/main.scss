@@ -1,0 +1,30 @@
+section{ 
+    min-height: calc(450px*6);
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-end;
+}
+.prize{
+    position: relative;
+    width: 150px;
+    bottom: 500px;
+    left: 200px;
+}
+.prize2{
+    position: relative;
+    width: 150px;
+    bottom: 900px;
+    left: 300px;
+}
+.prize3{
+    position: relative;
+    width: 150px;
+    bottom: 1400px;
+    left: 600px;
+}
+.box{
+    position: relative;
+    width: 150px;
+    bottom: 2200px;
+    left: 800px;
+}

@@ -1,0 +1,17 @@
+.main{
+    margin-top: 10%;
+    font-size: small
+}
+.card{
+    width: 150px;
+    color: #9e57c5;
+}
+.loading{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  & h2{
+    margin-left: -10%;
+  }
+}

@@ -1,0 +1,15 @@
+$border-color: #9e57c5;
+.modal-content{
+    background: repeating-linear-gradient(rgba(245, 182, 248,0.5), rgba(244, 174, 242,0.5) 1px, rgba(237, 165, 237, 0.5) 1px, rgba(236, 148, 244, 0.5) 4px);
+}
+.button{
+    // margin-left: 25%;
+    background:rgb(239, 136, 244);
+    padding: 5px;
+    border: $border-color 2px solid;
+    color: white;
+}
+.button:hover{
+    background:rgb(239, 136, 244);
+    border: $border-color 2px solid;
+}
