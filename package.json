@@ -42,8 +42,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "git": "git status",
-    "git2": "git add . && git commit -m 'add nft' && git push -u origin main ",
-    "deploy":"npx hardhat run src/backend/scripts/deploy.js --network localhost"
+    "git2": "git add . && git commit -m 'update all' && git push -u origin main ",
+    "deploy":"npx hardhat run src/backend/scripts/deploy.js --network rinkeby"
   },
   "eslintConfig": {
     "extends": [

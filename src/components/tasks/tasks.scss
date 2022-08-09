@@ -97,8 +97,11 @@ button{
   width: 200px;
   display: flex;
   justify-content: center;
-  top: 45%;
+  top: 50%;
   left: 20px;
+  @media only screen and (max-width: 600px) {
+    left: 300px;
+  }
   button{
     margin-left: 25%;
     background:rgb(239, 136, 244);

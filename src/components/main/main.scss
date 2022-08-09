@@ -3,28 +3,44 @@ section{
     display: flex;
     justify-content: flex-start;
     align-items:flex-end;
+    @media only screen and (max-width: 600px) {
+        min-height: calc(350px*7);
+    }
 }
+
 .prize{
     position: relative;
     width: 150px;
     bottom: 500px;
     left: 200px;
+    @media only screen and (max-width: 600px) {
+        left: 100px;
+    }
 }
 .prize2{
     position: relative;
     width: 150px;
     bottom: 900px;
     left: 300px;
+    @media only screen and (max-width: 600px) {
+        left: 200px;
+    }
 }
 .prize3{
     position: relative;
     width: 150px;
     bottom: 1400px;
     left: 600px;
+    @media only screen and (max-width: 600px) {
+        left: 300px;
+    }
 }
 .box{
     position: relative;
     width: 150px;
     bottom: 2200px;
     left: 800px;
+    @media only screen and (max-width: 600px) {
+        left: 600px;
+    }
 }

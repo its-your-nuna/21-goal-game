@@ -9,17 +9,21 @@ export default function MyPurchases({ marketplace, nft, account,setPlayer }) {
   const [purchases, setPurchases] = useState([])
   const loadPurchasedItems = async () => {
     // Fetch purchased items from marketplace by quering Offered events with the buyer set as the user
-    const filter =  marketplace.filters.Bought(null,null,null,null,null,account)
+    const filter =  marketplace.filters.Bought(null,null,null,null,account)
     const results = await marketplace.queryFilter(filter)
+    
     //Fetch metadata of each nft and add that to listedItem object.
     const purchases = await Promise.all(results.map(async i => {
       // fetch arguments from each result
       i = i.args
-      // get uri url from nft contract
+      console.log(i.itemId)
       const uri = await nft.tokenURI(i.tokenId)
       // use uri to fetch the nft metadata stored on ipfs 
+      console.log(uri)
       const response = await fetch(uri)
+      console.log(response)
       const metadata = await response.json()
+
       // get total price of item (item price + fee)
       const totalPrice = await marketplace.getTotalPrice(i.itemId)
       // define listed item object
@@ -28,7 +32,6 @@ export default function MyPurchases({ marketplace, nft, account,setPlayer }) {
         price: i.price,
         itemId: i.itemId,
         name: metadata.name,
-        description: metadata.description,
         image: metadata.image
       }
       return purchasedItem

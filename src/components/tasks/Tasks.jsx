@@ -145,12 +145,12 @@ export const Tasks = (props) => {
           key={i}
           className={`${i !== 0 && i === id ? 'speech-bubble' : 'null'}`}
           style={{
-            bottom: `${i * height + 300}px`,
-            left: `${(i * width) / 1}px`,
+            bottom: `${i * height + 80}px`,
+            left: `${(i * width-300)}px`,
           }}
         >
           <p>
-            {i === id && tasks[i - 1] ? tasks[i - 1].content : 'Here your text'}
+            {i === id && tasks[i - 1] ? tasks[i - 1].content : itemToDo}
           </p>
           <button type="button" onClick={() => edit(tasks[i - 1]._id)}>
             edit

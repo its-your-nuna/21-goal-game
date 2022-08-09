@@ -5,9 +5,7 @@ import {
 } from "react-router-dom";
 
 import Home from './components/marketplace/Home.js'
-import Create from './components/creat/Create.js'
-import MyListedItems from './components/MyListedItems.js'
-import MyPurchases from './components/MyPurchases'
+
 import MarketplaceAbi from './contractsData/Marketplace.json'
 import MarketplaceAddress from './contractsData/Marketplace-address.json'
 import NFTAbi from './contractsData/NFT.json'
@@ -52,6 +50,7 @@ function App() {
     const nft = new ethers.Contract(NFTAddress.address, NFTAbi.abi, signer)
     setNFT(nft)
     setLoading(false)
+    
   }
 
   return (
@@ -66,16 +65,7 @@ function App() {
           ) : ( */}
             <Routes>
               <Route path="/" element={
-                <Home marketplace={marketplace} nft={nft} player={player} />
-              } />
-              <Route path="/create" element={
-                <Create marketplace={marketplace} nft={nft} />
-              } />
-              <Route path="/my-listed-items" element={
-                <MyListedItems marketplace={marketplace} nft={nft} account={account} />
-              } />
-              <Route path="/my-purchases" element={
-                <MyPurchases marketplace={marketplace} nft={nft} account={account} player={player} setPlayer={setPlayer} />
+                <Home player={player} setPlayer={setPlayer}  marketplace={marketplace} nft={nft}  />
               } />
               <Route path="/mainpage" element={
                 <MainPage count={count} setCount={setCount} marketplace={marketplace} nft={nft} account={account} player={player}/>

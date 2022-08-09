@@ -35,30 +35,15 @@ export const Navigation = ({ count, web3Handler, account }) => {
     <>
       <div className="navbar">
         <Nav>
-          <Nav.Link href="#contact">
+          <Nav.Link >
               <span id="cash">
               💎 {count} ETH
               </span>
           </Nav.Link>
-          <a href="#contact">
-            <div>
-              <span id="timer">
-                
-              </span>
-            </div>
-          </a>
+         
           <Nav.Link as={Link} to="/">
+            
             Marketplace
-          </Nav.Link>
-          <Nav.Link as={Link} to="/create">
-            Create
-          </Nav.Link>
-          {/* 
-          <Nav.Link as={Link} to="/my-listed-items">
-            My Listed Items
-          </Nav.Link> */}
-          <Nav.Link as={Link} to="/my-purchases">
-            My Purchases
           </Nav.Link>
           <Nav.Link as={Link} to="/mainpage">
             Main Page

@@ -514,8 +514,8 @@
       ]
     },
     "/home/aidana/Game/21goal/src/backend/contracts/Marketplace.sol": {
-      "lastModificationDate": 1659447654094,
-      "contentHash": "b44c8473fb21b9b7e4a0280e192f5026",
+      "lastModificationDate": 1660040324053,
+      "contentHash": "6940ff2872d20dae1b46aa5f81179337",
       "sourceName": "src/backend/contracts/Marketplace.sol",
       "solcConfig": {
         "version": "0.8.4",

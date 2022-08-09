@@ -35,7 +35,6 @@ contract Marketplace is ReentrancyGuard {
     );
     event Bought(
         uint itemId,
-        address indexed nft,
         uint tokenId,
         uint price,
         address indexed seller,
@@ -72,12 +71,29 @@ contract Marketplace is ReentrancyGuard {
             msg.sender
         );
     }
+     //uint256 public constant tokenPrice = 5; // 1 token for 5 wei
+    
+    // function buy() payable public {
 
+    // uint256 amountTobuy = msg.value;
+
+    // uint256 dexBalance = token.balanceOf(address(this));
+
+    // require(amountTobuy > 0, "You need to send some ether");
+
+    // require(amountTobuy <= dexBalance, "Not enough tokens in the reserve");
+
+    // token.transfer(msg.sender, amountTobuy);
+
+    // emit Bought(amountTobuy);
+
+//}
+    
     function purchaseItem(uint _itemId) external payable nonReentrant {
         uint _totalPrice = getTotalPrice(_itemId);
         Item storage item = items[_itemId];
-        require(_itemId > 0 && _itemId <= itemCount, "item doesn't exist");
-        require(msg.value >= _totalPrice, "not enough ether to cover item price and market fee");
+        //require(_itemId > 0 && _itemId <= itemCount, "item doesn't exist");
+        //require(msg.value >= _totalPrice, "not enough ether to cover item price and market fee");
         require(!item.sold, "item already sold");
         // pay seller and feeAccount
         item.seller.transfer(item.price);
@@ -85,11 +101,10 @@ contract Marketplace is ReentrancyGuard {
         // update item to sold
         item.sold = true;
         // transfer nft to buyer
-        item.nft.transferFrom(address(this), msg.sender, item.tokenId);
+       // item.nft.transferFrom(address(this), msg.sender, item.tokenId);
         // emit Bought event
         emit Bought(
             _itemId,
-            address(item.nft),
             item.tokenId,
             item.price,
             item.seller,

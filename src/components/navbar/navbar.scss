@@ -9,19 +9,26 @@
     background: repeating-linear-gradient(rgba(245, 182, 248,0.5), rgba(244, 174, 242,0.5) 1px, rgba(237, 165, 237, 0.5) 1px, rgba(236, 148, 244, 0.5) 4px);
   }
   
-  .navbar a {
-    float: left;
-    
-    display: block;
+  .navbar a {  
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
     font-size: 17px;
   }
+  
   img{
     width: 50px;
     padding: 0;
     margin: 0;
     margin-bottom: -1px;
+  }
+  @media only screen and (max-width: 600px) {
+    .navbar {
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      max-width: 600px;
+      margin-left: -10%;
+      font-size: 36px;
+      background: repeating-linear-gradient(rgba(245, 182, 248,0.5), rgba(244, 174, 242,0.5) 1px, rgba(237, 165, 237, 0.5) 1px, rgba(236, 148, 244, 0.5) 4px);
+    }
   }
