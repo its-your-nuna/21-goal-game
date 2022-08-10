@@ -14,7 +14,7 @@ export const Tasks = (props) => {
   const ref = useRef(null)
   const ref2 = useRef(null)
   const { setTasksDone } = useContext(TaskContext)
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState()
   const [isEditing, setIsEditing] = useState(false)
   const [editId, setEditID] = useState(0)
   const [catRect, setCatRect] = useState({
@@ -24,6 +24,7 @@ export const Tasks = (props) => {
     height: 0,
   })
   const addItem = () => {
+    setTasks(itemToDo)
     if (isEditing) {
       axios
         .put(`http://localhost:5000/tasks/${editId}`, {
@@ -126,7 +127,7 @@ export const Tasks = (props) => {
             <input className="checkbox-pull" type="checkbox" />
             <label>
             💜
-              Мои успехи
+              Write  your progress
               <input
                 type="text"
                 className="form-control"
@@ -150,7 +151,8 @@ export const Tasks = (props) => {
           }}
         >
           <p>
-            {i === id && tasks[i - 1] ? tasks[i - 1].content : itemToDo}
+            {/* {i === id && tasks[i - 1] ? tasks[i - 1].content : 'Daily progress'} */}
+            {i === id && tasks ?tasks: 'Daily progress'}
           </p>
           <button type="button" onClick={() => edit(tasks[i - 1]._id)}>
             edit

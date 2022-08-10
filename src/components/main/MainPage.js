@@ -119,7 +119,7 @@ export const MainPage = ({ count,setCount,player }) => {
       setModalShow,
       setModalText
     }}>
-      <span id="time">{time}</span>
+     
       <Stair
         stairsRef={stairsRef}
         isClicked={isClicked}
