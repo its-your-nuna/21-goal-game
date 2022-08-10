@@ -42,7 +42,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "git": "git status",
-    "git2": "git add . && git commit -m 'change onload' && git push -u origin main ",
+    "git2": "git add . && git commit -m 'change1onload' && git push -u origin main ",
     "deploy":"npx hardhat run src/backend/scripts/deploy.js --network rinkeby"
   },
   "eslintConfig": {
