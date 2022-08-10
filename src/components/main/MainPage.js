@@ -11,6 +11,7 @@ import prize from '../../images/prize.png'
 import box from '../../images/box.png'
 
 
+
 export const MainPage = ({ count,setCount,player }) => {
   
   const stairsRef = useRef(null)
@@ -77,6 +78,36 @@ export const MainPage = ({ count,setCount,player }) => {
       }
     };
   },[])
+  window.onload= function(){
+    var timer = new CountDownTimer(5);
+  
+    timer.onTick(format).onTick(restart).start();
+    function restart() {
+      if (daysCount < 21) {
+        if (this.expired()) {
+           setTimeout(function () {
+            timer.start()
+          }, 1000);
+          daysCount += 1;
+          setDaysCount(daysCount)
+          setTasksDone(false)
+          setIsExpired(true)
+        }
+
+      } else if (this.expired() && daysCount > 3) {
+        setTimeout(function () {
+          ;
+        }, 1000);
+        setDaysCount(0)
+      }
+  
+    }
+    function format(minutes, seconds) {
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+      setTime( minutes + ':' + seconds);
+    }
+  };
   
   return (
     <section>
@@ -88,7 +119,7 @@ export const MainPage = ({ count,setCount,player }) => {
       setModalShow,
       setModalText
     }}>
-      <span id="time"></span>
+      <span id="time">{time}</span>
       <Stair
         stairsRef={stairsRef}
         isClicked={isClicked}
