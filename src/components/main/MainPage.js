@@ -147,10 +147,10 @@ export const MainPage = ({ count,setCount,player }) => {
         isExpired={isExpired}
         id={id}
       />
-      ${savedTasksDone && <img className='prize' src={prize} />}
-      ${savedTasksDone && <img className='prize2' src={prize} />}
-      ${savedTasksDone && <img className='prize3' src={prize} />}
-      ${savedTasksDone && <img className='box' src={box} />}
+      {savedTasksDone && <img className='prize' src={prize} />}
+      {savedTasksDone && <img className='prize2' src={prize} />}
+      {savedTasksDone && <img className='prize3' src={prize} />}
+      {savedTasksDone && <img className='box' src={box} />}
       <ModalClass
         show={modalShow}
         modalText={modalText}

@@ -15,7 +15,7 @@ import { ethers } from "ethers"
 import { Spinner } from 'react-bootstrap'
 import { MainPage } from "./components/main/MainPage";
 import { Navigation } from "./components/navbar/Navbar.jsx";
-import './App.css'
+import './App.scss'
 function App() {
   const [loading, setLoading] = useState(true)
   const [buttonText,setButtonText] = useState("")

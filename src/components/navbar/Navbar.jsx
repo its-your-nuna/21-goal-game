@@ -48,8 +48,7 @@ export const Navigation = ({ count, web3Handler, account }) => {
           <Nav.Link as={Link} to="/mainpage">
             Main Page
           </Nav.Link>
-        </Nav>
-        <Nav>
+        
           {account ? (
             <Nav.Link
               href={`https://etherscan.io/address/${account}`}
