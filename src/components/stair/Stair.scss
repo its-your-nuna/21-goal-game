@@ -91,8 +91,8 @@ $stepIcolor2:#02c5e7;
     cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
-    $size: 80px;
-    $size2:350px;
+    $size: 30px;
+    $size2:150px;
 .gift{
     position: relative;
     width: 250px;
@@ -124,10 +124,10 @@ $stepIcolor2:#02c5e7;
 
 .stairs .step{
     position: absolute;
-    left:calc(80px*var(--j));
+    left:calc(30px*var(--j));
     bottom: 0;
     width: $size;
-    height: calc(80px*var(--j));
+    height: calc(30px*var(--j));
     transform-style: preserve-3d;
     &::before{
     content: '';
@@ -170,7 +170,7 @@ $stepIcolor2:#02c5e7;
 }
 
 .live{
-    width:80px;
+    width:30px;
     margin-left: 0;
     cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import React, {Suspense, useState, useRef, useEffect } from 'react'
 import cat from './astro.png'
 import { animated, useSpring } from "react-spring";
-
+import './chibi.scss'
 export const Chibi = (props) => {
   const {stairsRef,tasksDone, daysCount,savedDay,player} = props
 
@@ -35,7 +35,7 @@ export const Chibi = (props) => {
   
   
   const springProps = useSpring({
-    from: { bottom: height * days + 'px', left: width * days + 'px', width: '200px', height: '200px', position: 'relative' },
+    from: { bottom: height * days + 'px', left: width * days + 'px' },
     to: async next => {
       await next({ bottom: height * days +150 + 'px', left: width * days + 'px' })
       await next({ bottom: height * days + 60 + 'px', left: width * days + width / 2 + 'px' })
@@ -48,6 +48,7 @@ export const Chibi = (props) => {
       <animated.img 
         draggable = "false"
         ref={catRef}
+        className = 'chibi'
         src={player?player:cat}
         alt={'cat'}
         style={

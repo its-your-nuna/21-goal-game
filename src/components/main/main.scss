@@ -4,7 +4,8 @@ section{
     justify-content: flex-start;
     align-items:flex-end;
     @media only screen and (max-width: 600px) {
-        min-height: calc(350px*7);
+        margin-left: -50%;
+        min-height: calc(1000px);
     }
 }
 
