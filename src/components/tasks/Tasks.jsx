@@ -106,9 +106,9 @@ export const Tasks = (props) => {
     draggable(element)
   })
   const { width, height } = catRect
-  // if (isExpired) {
-  //   ref.current.checked = false
-  // }
+  if (isExpired) {
+    ref.current.checked = false
+  }
   return (
     <>
       <div className="player" ref={ref2}>

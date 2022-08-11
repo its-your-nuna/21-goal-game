@@ -15,7 +15,7 @@ section{
     bottom: 500px;
     left: 200px;
     @media only screen and (max-width: 600px) {
-        left: -100px;
+        left: 10px;
         bottom: 100px;
         width: 70px;
     }
@@ -26,7 +26,7 @@ section{
     bottom: 900px;
     left: 300px;
     @media only screen and (max-width: 600px) {
-        left: -80px;
+        left: 50px;
         bottom: 300px;
         width: 70px;
     }
@@ -37,7 +37,7 @@ section{
     bottom: 1400px;
     left: 600px;
     @media only screen and (max-width: 600px) {
-        left: -20px;
+        left: 100px;
         bottom: 500px;
         width: 70px;
     }
@@ -48,8 +48,8 @@ section{
     bottom: 2200px;
     left: 800px;
     @media only screen and (max-width: 600px) {
-        left: 100px;
-        bottom: 800px;
+        left: 200px;
+        bottom: 850px;
         width: 70px;
     }
 }

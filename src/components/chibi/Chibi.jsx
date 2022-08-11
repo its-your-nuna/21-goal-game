@@ -32,17 +32,21 @@ export const Chibi = (props) => {
   }else{
     days=savedDay-1
   }
-  
-  
+  let bottom1=height * days +150;
+  let bottom2 =height * days + 60;
+  if(height<40){
+    bottom1=height * days +100;
+    bottom2 =height * days + 30;
+  }
   const springProps = useSpring({
     from: { bottom: height * days + 'px', left: width * days + 'px' },
     to: async next => {
-      await next({ bottom: height * days +150 + 'px', left: width * days + 'px' })
-      await next({ bottom: height * days + 60 + 'px', left: width * days + width / 2 + 'px' })
+      await next({ bottom: bottom1 + 'px', left: width * days + 'px' })
+      await next({ bottom: bottom2 + 'px', left: width * days + width / 2 + 'px' })
     },
     config: { duration: 500 }
   });
-
+  console.log(height)
   return (
     <>
       <animated.img 
