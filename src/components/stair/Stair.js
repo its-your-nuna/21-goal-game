@@ -25,11 +25,7 @@ export const Stair = (props) => {
         <div className={`${taskDone ? 'step-taskDone' : 'step'}`}
           ref={stairsRef}
           style={{ "--j": 1 }}>
-          <i ><img onClick={
-            () => { setIsClicked(!isClicked) }
-          }
-            style={{ width: '75px', margin: '0px' }}
-            src={live} /></i>
+          <i ></i>
           <i></i>
         </div>
         {
